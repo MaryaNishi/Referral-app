@@ -1,12 +1,15 @@
-from django.shortcuts import render
-from django.urls import reverse
-from django.http import HttpResponseRedirect
 import time
-from .models import User
+
 from rest_framework.response import Response
 from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import User
 from .serializer import UserPhoneNumbersSerializer
 
 
