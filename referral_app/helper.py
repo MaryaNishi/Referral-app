@@ -1,10 +1,10 @@
-from django import forms
-import phonenumbers
 import random
 import string
-from .models import User
+from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+import phonenumbers
+from .models import User
 
 
 class LoginForm(forms.Form):
