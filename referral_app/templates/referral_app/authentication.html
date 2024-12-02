@@ -1,0 +1,13 @@
+{% extends "referral_app/layout.html" %}
+
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <form method="POST" action="{% url 'referral:authentication' %}">
+        {% csrf_token %}
+        <p>Введите код, отправленный на номер {{ phone_number }}:</p>
+        {{ form }}
+        <input type="submit" value="continue">
+    </form>
+{% endblock %}

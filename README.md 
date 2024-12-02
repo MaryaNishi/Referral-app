@@ -1,0 +1,91 @@
+
+# API Documentation
+
+### Overview:
+
+- **`POST /api/check-invite-code/`**: This API endpoint is used to check if an invite code is valid. The invite code is passed in the request body, and the server checks if the code exists in the database, excluding the current user's invite code.
+- **`GET /api/profile/invite-users/`**: This API endpoint returns a list of users who have used the current user's invite code. It returns the phone numbers of users who have activated the invite code.
+
+## Endpoints
+
+### 1. `POST /api/check-invite-code/`
+#### Purpose:
+This endpoint checks if a provided invite code is valid and exists in the system, excluding the current user's invite code.
+
+#### Request:
+- **Method**: `POST`
+- **Content-Type**: `application/json`
+- **Body**:
+  ```json
+  {
+    "invite_code": "ABC123"
+  }
+  ```
+
+#### Response:
+- **If the invite code exists and is valid**:
+  ```json
+  {
+    "valid": true
+  }
+  ```
+  - **HTTP Status**: `200 OK`
+
+- **If the invite code is invalid or does not exist**:
+  ```json
+  {
+    "valid": false
+  }
+  ```
+  - **HTTP Status**: `400 Bad Request`
+
+---
+
+### 2. `GET /api/profile/invite-users/`
+#### Purpose:
+This endpoint retrieves a list of phone numbers of users who have activated the current user's invite code.
+
+#### Request:
+- **Method**: `GET`
+- **Content-Type**: `application/json`
+
+#### Response:
+- **HTTP Status**: `200 OK`
+- **Body**:
+  ```json
+  [
+    {
+      "phone_number": "+79093336780"
+    },
+    {
+      "phone_number": "+79093336797"
+    }
+  ]
+  ```
+
+---
+
+## URL Configuration
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('api/check-invite-code/', views.check_invite_code, name='check_invite_code'),
+    path('api/profile/invite-users/', views.get_phone_numbers, name='invite_users'),
+]
+```
+
+### Description:
+
+1. **POST /api/check-invite-code/**:
+   - This endpoint is used to check if an invite code exists and is valid in the database, excluding the current user's invite code.
+   - The user provides the invite code in the body of the `POST` request, and the server checks if this code exists in the database.
+   - If valid, the server returns `{"valid": true}`, otherwise `{"valid": false}` with a `400` HTTP error.
+
+2. **GET /api/profile/invite-users/**:
+   - This endpoint retrieves a list of users who have activated the current user's invite code.
+   - It returns a JSON array with each user’s ID and phone number who activated the invite code, with an HTTP status of `200 OK`.
+
+---

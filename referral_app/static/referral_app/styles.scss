@@ -1,0 +1,28 @@
+.container {
+    text-align: center;
+    margin-top: 30vh;
+
+    input {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 15px;
+        border: solid 1px gray;
+    }
+    input[type=submit]{
+        background-color: #9bcbfe;
+    }
+
+    div {
+        margin: 20px;
+        padding: 10px;
+    }
+
+    #activated_code {
+        border-radius: 15px;
+        border: solid 1px gray;
+        background-color: #9bcbfe;
+        width: 40vw;
+        margin: 0 auto;
+    }
+
+}

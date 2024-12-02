@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  margin-top: 30vh;
+}
+.container input {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px gray;
+}
+.container input[type=submit] {
+  background-color: #9bcbfe;
+}
+.container div {
+  margin: 20px;
+  padding: 10px;
+}
+.container #activated_code {
+  border-radius: 15px;
+  border: solid 1px gray;
+  background-color: #9bcbfe;
+  width: 40vw;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=styles.css.map */

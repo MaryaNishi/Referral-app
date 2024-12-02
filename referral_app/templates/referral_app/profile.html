@@ -1,0 +1,32 @@
+{% extends "referral_app/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+   
+    <div>Пользователь: {{ number }}</div>
+
+    {% if activated_invite_code %}
+        <div id="activated_code">Ваш инвайт-код активирован: {{ activated_invite_code }}</div>
+    {% else %}
+        <form method="POST" action="{% url 'referral:profile' %}" id="invite-code-form">
+            {% csrf_token %}
+            <p>Вставьте ваш инвайт-код</p>
+            <input type="text" id="invite-code-input" name="invite-code">
+            <input type="submit" id="submit" value="Активировать код">
+        </form>
+    {% endif %}
+
+
+    <form action="{% url 'referral:logout' %}">
+        <input type="submit" value="LogOut">
+    </form>
+
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'referral_app/referral.js' %}"></script>
+{% endblock %}
